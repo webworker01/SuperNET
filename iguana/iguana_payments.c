@@ -1710,9 +1710,15 @@ THREE_INTS(iguana,splitfunds,satoshis,duplicates,sendflag)
     addresses = iguana_getaddressesbyaccount(myinfo,coin,"*");
     if ( (rawtx= iguana_utxoduplicates(myinfo,coin,pubkey33,satoshis,duplicates,&completed,&signedtxid,sendflag,addresses)) != 0 )
     {
+        
         jaddstr(retjson,"result",rawtx);
         jaddbits256(retjson,"txid",signedtxid);
         jadd(retjson,"completed",completed != 0 ? jtrue() : jfalse());
+        jaddstr(retjson,"myinfo",myinfo);
+        jaddstr(retjson,"coin",coin);
+        jaddstr(retjson,"pubkey33",pubkey33);
+        jaddstr(retjson,"satoshis",satoshis);
+        jaddstr(retjson,"duplicates",duplicates);
         free(rawtx);
     } else jaddstr(retjson,"error","couldnt create duplicates tx");
     if ( addresses != 0 )

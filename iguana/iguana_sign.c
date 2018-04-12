@@ -1482,7 +1482,7 @@ int32_t iguana_signrawtransaction(struct supernet_info *myinfo,struct iguana_inf
                     {
                         printf("iguana_interpreter %d error.(%s)\n",tmp,signedtx);
                         complete = 0;
-                    } else printf("%s signed\n",bits256_str(str,*signedtxidp));
+                    } else printf("%s signed\n",bits256_str(jstr,*signedtxidp));
                 } else printf("complete.%d\n",complete);
             } else printf("rwmsgtx error\n");
         } else fprintf(stderr,"no inputs in vins.(%s)\n",vins!=0?jprint(vins,0):"null");
